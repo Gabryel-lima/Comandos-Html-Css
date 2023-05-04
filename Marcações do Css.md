@@ -6,7 +6,6 @@
 
 ![1682987976449](image/MarcaçõesdoCss/1682987976449.png)
 
-
 ## Media types
 
 Desde muito tempo o CSS tem suporte para se definir regras que só valem em certo contexto. Os [**media types**](http://www.w3.org/TR/CSS2/media.html) permitem que se use estilos diferentes em situações diferentes e sempre foram muito usados para distinguir a renderização na tela da impressão:
@@ -98,3 +97,34 @@ Nós inclusive [abrimos o código do site no Github](https://github.com/caelum/a
 As novas media queries do CSS3 são muito úteis para adaptar nosso site a diferentes resoluções. E o melhor é que contam com excelente suporte nos navegadores mobile.
 
 O título desse post não está muito correto. Apesar das media queries serem fundamentais para a Web mobile (e terem nascido nesse meio), todo os navegadores Desktop modernos também suportam os media queries de CSS3 (até o IE). Usar `max-width`, por exemplo, vai fazer com que o layout se ajuste ao tamanho da janela do navegador.
+
+
+No nosso projeto nos esbarramos nas pseudo-classes **:hover** e  **:checked** , mas será que só existem essas? A resposta é  **não** ! Então, vamos conhecer outras maneiras de customizar seu projeto?
+
+| **Pseudo-classe** | **Descrição**                                            | **Exemplo**                                                        |
+| ----------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| :active                 | Link que está ativo.                                            | Um link sendo clicado.                                                   |
+| :disabled               | Elemento desativado.                                             | Um input que não pode ser preenchido.                                   |
+| :focus                  | Elemento recebendo foco ao ser selecionado por mouse ou teclado. | Campo de um formulário.                                                 |
+| :link                   | Cor dos links.                                                   | Tag `<a>` em geral.                                                    |
+| :visited                | Cor dos links que já foram visitados.                           | É utilizado em tags `<a>` mas só aparecem quando já foram clicadas. |
+
+Repare que todas elas têm algo em comum: começam com dois pontos. Também temos algo no nosso código que começa assim e não citamos até agora: o  **:root** . Afinal, ele também é uma pseudo-classe? Apesar de ter um intuito diferente das outras (de se manifestar de acordo com alguma interação ou condição), ele é considerado sim uma pseudo-classe. Você pode aprender mais sobre pseudo-classes no [MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/CSS/Pseudo-classes).
+
+Também ao editar os inputs da página usamos outra coisa com estrutura semelhante: o  **::placeholder** . Mesmo que comece com dois pontos (e dessa vez repetidos) ele é um  **pseudo-elemento** , uma palavra-chave adicionada a um seletor que especifica uma parte do elemento selecionado. No [MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/CSS/Pseudo-elements) você também consegue encontrar mais sobre esse assunto.
+
+Durante todo o desenvolvimento do projeto, utilizamos seletores de classes para selecionar onde deveria ser estilizado, mas também há seletores por outras características como:
+
+| **Seletor** | **Descrição**                                        | **Exemplo de uso** |
+| ----------------- | ------------------------------------------------------------ | ------------------------ |
+| Tag               | Escolhe todos elementos que correspondem ao valor fornecido. | section, a, p            |
+| ID                | Seleciona elementos baseado no seu ID                        | #valor-do-id             |
+| Universal         | Seleciona todos os elementos                                 | *                        |
+
+Para construir as interações do menu, nossos ajudantes foram os combinadores, que auxiliam alcançar os elementos necessários dentro do conjunto de elementos do código. Vamos reforçar nosso conhecimento sobre eles?
+
+| **Combinador** | **Descrição**                                                                                                 | **Exemplo de uso**                        |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| +                    | Seleciona elementos que estão logo após o elemento especificado antes do símbolo.                                  | .container__botao + container__rotulo           |
+| ~                    | Seleciona elementos que estão após (mas não necessariamente em seguida) o elemento especificado antes do símbolo. | .container__botao ~ .container__rotulo          |
+| >                    | Seleciona elementos que estão dentro do elemento especificado antes do símbolo.                                     | .container__rotulo>.cabeçalho__menu-hamburguer |
